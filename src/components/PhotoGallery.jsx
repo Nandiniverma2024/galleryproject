@@ -40,7 +40,11 @@ export default function PhotoGallery() {
   // Fetch photos from backend
   const fetchPhotos = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/photos");
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/photos`);
+
+      // Before deployment
+
+      // const res = await axios.get("http://localhost:5000/api/photos");
       setPhotos(res.data);
     } catch (err) {
       console.error("Error fetching photos", err);

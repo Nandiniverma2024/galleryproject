@@ -8,10 +8,17 @@ export default function PhotoForm({ onUpload }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/photos", {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/photos`, {
         title,
         imageUrl,
       });
+
+      // before deployment
+
+      // await axios.post("http://localhost:5000/api/photos", {
+      //   title,
+      //   imageUrl,
+      // });
       setTitle("");
       setImageUrl("");
       onUpload(); // refresh gallery
